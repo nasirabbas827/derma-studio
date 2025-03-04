@@ -46,7 +46,8 @@ $result = mysqli_query($conn, $sql);
     <div class="row mt-4">
         <div class="col-md-12">
             <h4>All Doctors</h4>
-            <table class="table table-bordered">
+            <div class="table-responsive">
+    <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th>ID</th>
@@ -96,6 +97,7 @@ $result = mysqli_query($conn, $sql);
             </table>
         </div>
     </div>
+</div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

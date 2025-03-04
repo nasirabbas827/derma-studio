@@ -49,6 +49,9 @@ $conn->close();
 <?php include('admin_navbar.php'); ?>
 
 <div class="container mt-5">
+<div class="card mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+
     <h2>Admin Profile</h2>
     <?php if (isset($success_message)) { ?>
         <div class="alert alert-success"><?php echo $success_message; ?></div>
@@ -64,6 +67,8 @@ $conn->close();
         </div>
         <button type="submit" class="btn btn-primary">Update Profile</button>
     </form>
+</div>
+</div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

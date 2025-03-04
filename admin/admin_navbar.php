@@ -6,10 +6,13 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ml-auto">
       <li class="nav-item ">
-        <a class="nav-link" href="update_admin.php">Update Profile</a>
+        <a class="nav-link" href="update_admin.php">Profile</a>
       </li>
       <li class="nav-item ">
         <a class="nav-link" href="view_doctors.php">Doctors</a>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link" href="view_patients.php">Patients</a>
       </li>
       <li class="nav-item ">
         <a class="nav-link" href="add_about.php">About Us</a>

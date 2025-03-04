@@ -74,6 +74,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 include('navbar.php');
 ?>
     <div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+
         <h2 class="text-center">User Login</h2>
         <p class="text-center">Please fill in your credentials to log in.</p>
 
@@ -94,6 +97,8 @@ include('navbar.php');
         </form>
         <p class="text-center">Have'nt any Account <a href="register.php">Register here</a></p>
         
+    </div>
+    </div>
     </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

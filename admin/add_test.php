@@ -67,6 +67,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <?php include('admin_navbar.php'); ?>
 <div class="container mt-5">
+<div class="card mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+
     <h2>Add Test</h2>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
         <div class="form-group">
@@ -83,6 +86,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <a href="view_tests.php" class="btn btn-secondary">Cancel</a>
         </div>
     </form>
+</div>
+</div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>

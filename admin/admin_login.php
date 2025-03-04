@@ -47,7 +47,10 @@ $conn->close();
   </button>
 </nav>
 
-    <div class="container">
+    <div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+
         <form class="login-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
             <h2 class="mb-4">Admin Login</h2>
             <?php if (isset($error)) { ?>
@@ -63,6 +66,8 @@ $conn->close();
             </div>
             <button type="submit" class="btn btn-primary">Login</button>
         </form>
+    </div>
+    </div>
     </div>
 
     <!-- Add Bootstrap JS scripts at the end of the body -->

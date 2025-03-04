@@ -87,6 +87,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <?php include('navbar.php'); ?>
 <div class="container mt-5">
+<div class="card mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+
     <h2 class="text-center">Update Profile</h2>
     <div class="mt-4">
         <img src="<?php echo $profile_pic; ?>" alt="Profile Picture" class="img-fluid rounded-circle" style="max-width: 150px;">
@@ -123,6 +126,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </form>
     </div>
+</div>
+</div>
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>

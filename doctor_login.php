@@ -86,6 +86,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 <?php include('navbar.php'); ?>
     <div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+
         <h2 class="text-center">Doctor Login</h2>
         <p class="text-center">Please fill in your credentials to login.</p>
 
@@ -112,6 +115,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
 
         <p class="text-center">Don't have an account? <a href="doctor_register.php">Register here</a></p>
+    </div>
+    </div>
     </div>
 
     <!-- Bootstrap JS -->

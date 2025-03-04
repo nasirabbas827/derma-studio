@@ -60,6 +60,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php include('navbar.php'); ?>
 
 <div class="container mt-5">
+<div class="card mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+
     <h2 class="text-center">Make Appointment with <?php echo $doctor_name; ?></h2>
     <div class="row justify-content-center">
         <div class="col-md-6">
@@ -72,6 +75,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </form>
         </div>
     </div>
+</div>
+</div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

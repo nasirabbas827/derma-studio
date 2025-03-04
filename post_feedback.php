@@ -48,6 +48,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php include('navbar.php'); ?>
 
 <div class="container mt-5">
+<div class="card mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+
     <h2 class="text-center">Post Feedback</h2>
     <?php if (!empty($error_msg)): ?>
         <div class="alert alert-danger" role="alert"><?php echo $error_msg; ?></div>
@@ -63,6 +66,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </div>
         <button type="submit" class="btn btn-primary">Submit Feedback</button>
     </form>
+</div>
+</div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

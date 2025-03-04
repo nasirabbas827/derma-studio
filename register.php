@@ -111,6 +111,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 include('navbar.php');
 ?>
     <div class="container mt-5">
+    <div class="card mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+
         <h2 class="text-center">User Registration</h2>
         <p class="text-center">Please fill in your details to register.</p>
 
@@ -146,6 +149,8 @@ include('navbar.php');
         </form>
 
         <p class="text-center">Already have an account? <a href="login.php">Login here</a></p>
+    </div>
+    </div>
     </div>
 
     <!-- Bootstrap JS -->

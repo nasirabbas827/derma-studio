@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 26, 2024 at 06:47 AM
+-- Generation Time: Mar 04, 2025 at 07:31 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -110,7 +110,7 @@ CREATE TABLE `doctors` (
 --
 
 INSERT INTO `doctors` (`doctor_id`, `username`, `password`, `email`, `profile_pic`, `full_name`, `clearance_certificate`, `certificate_number`, `status`, `created_at`, `updated_at`, `specialization`, `experience`) VALUES
-(1, 'doc1', '', 'nasiryt.827@gmail.com', 'uploads/download.png', 'NASIR ABBAS', 'uploads/images.jpg', '123', 'approved', '2024-05-19 08:12:35', '2024-11-26 05:41:08', 'Chest ', 3);
+(1, 'doc1', '$2y$10$WW1gaOUubbJWXmvCESeuU.JjB8kNkSXvE3OBTvk0UtSvFBX5lp4sC', 'nasiryt.827@gmail.com', 'uploads/download.png', 'NASIR ABBAS', 'uploads/images.jpg', '123', 'approved', '2024-05-19 08:12:35', '2024-11-26 09:03:41', 'Chest ', 3);
 
 -- --------------------------------------------------------
 
@@ -216,9 +216,15 @@ INSERT INTO `tests` (`test_id`, `test_name`, `description`, `created_at`, `updat
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
+  `first_name` varchar(100) NOT NULL,
+  `last_name` varchar(100) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(100) NOT NULL,
   `phone` varchar(20) NOT NULL,
+  `mobile` varchar(15) NOT NULL,
+  `cnic` varchar(20) NOT NULL,
+  `state` varchar(100) NOT NULL,
+  `city` varchar(100) NOT NULL,
   `age` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
@@ -226,8 +232,8 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `username`, `password`, `email`, `phone`, `age`) VALUES
-(1, 'Nasir', '$2y$10$WW1gaOUubbJWXmvCESeuU.JjB8kNkSXvE3OBTvk0UtSvFBX5lp4sC', 'nasiryt.827@gmail.com', '3176526827', 22);
+INSERT INTO `users` (`id`, `username`, `first_name`, `last_name`, `password`, `email`, `phone`, `mobile`, `cnic`, `state`, `city`, `age`) VALUES
+(1, 'Nasir12', 'NASIR', 'ABBAS', '$2y$10$WW1gaOUubbJWXmvCESeuU.JjB8kNkSXvE3OBTvk0UtSvFBX5lp4sC', 'nasiryt.827@gmail.com', '3176526827', '3176526827', '3240284436381', 'BA', 'Salvador', 22);
 
 --
 -- Indexes for dumped tables

@@ -53,6 +53,9 @@ $appointment_id = $_GET['appointment_id'];
 <?php include('navbar.php'); ?>
 
 <div class="container mt-5 mb-5">
+<div class="card mx-auto" style="max-width: 600px;">
+        <div class="card-body">
+
     <h2 class="text-center">Add Medical Record</h2>
     <?php if (!empty($success_msg)): ?>
         <div class="alert alert-success" role="alert"><?php echo $success_msg; ?></div>
@@ -60,8 +63,8 @@ $appointment_id = $_GET['appointment_id'];
     <?php if (!empty($error_msg)): ?>
         <div class="alert alert-danger" role="alert"><?php echo $error_msg; ?></div>
     <?php endif; ?>
-    <div class="row">
-        <div class="col-md-8 offset-md-2">
+    <div class="mt-4">
+
             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                 <input type="hidden" name="patient_id" value="<?php echo $patient_id; ?>">
                 <div class="form-group">
@@ -88,6 +91,8 @@ $appointment_id = $_GET['appointment_id'];
             </form>
         </div>
     </div>
+</div>
+</div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
