@@ -24,14 +24,38 @@ $result = mysqli_stmt_get_result($stmt);
 $row = mysqli_fetch_assoc($result);
 mysqli_stmt_close($stmt);
 
+$existing_image = $row['image']; // Store existing image
+
 // Update service details
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $service_name = $_POST['service_name'];
     $description = $_POST['description'];
+    $image_path = $existing_image;
 
-    $sql_update = "UPDATE services SET service_name = ?, description = ? WHERE service_id = ?";
+    // Handle image upload
+    if (!empty($_FILES['image']['name'])) {
+        $target_dir = "services/";
+        $image_name = basename($_FILES["image"]["name"]);
+        $image_path = $target_dir . time() . "_" . $image_name; // Unique filename
+        $image_type = strtolower(pathinfo($image_path, PATHINFO_EXTENSION));
+
+        // Validate image type
+        $allowed_types = ['jpg', 'jpeg', 'png', 'gif'];
+        if (!in_array($image_type, $allowed_types)) {
+            echo "<script>alert('Invalid file type. Only JPG, PNG, and GIF allowed.');</script>";
+        } else {
+            // Delete old image if exists
+            if (!empty($existing_image) && file_exists($existing_image)) {
+                unlink($existing_image);
+            }
+            move_uploaded_file($_FILES["image"]["tmp_name"], $image_path);
+        }
+    }
+
+    // Update database
+    $sql_update = "UPDATE services SET service_name = ?, description = ?, image = ? WHERE service_id = ?";
     $stmt_update = mysqli_prepare($conn, $sql_update);
-    mysqli_stmt_bind_param($stmt_update, "ssi", $service_name, $description, $service_id);
+    mysqli_stmt_bind_param($stmt_update, "sssi", $service_name, $description, $image_path, $service_id);
     mysqli_stmt_execute($stmt_update);
     mysqli_stmt_close($stmt_update);
 
@@ -56,14 +80,24 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="card-body">
 
     <h2>Edit Service</h2>
-    <form action="" method="post">
+    <form action="" method="post" enctype="multipart/form-data">
         <div class="form-group">
             <label for="service_name">Service Name:</label>
-            <input type="text" class="form-control" id="service_name" name="service_name" value="<?php echo $row['service_name']; ?>">
+            <input type="text" class="form-control" id="service_name" name="service_name" value="<?php echo htmlspecialchars($row['service_name']); ?>" required>
         </div>
         <div class="form-group">
             <label for="description">Description:</label>
-            <textarea class="form-control" id="description" name="description" rows="4"><?php echo $row['description']; ?></textarea>
+            <textarea class="form-control" id="description" name="description" rows="4" required><?php echo htmlspecialchars($row['description']); ?></textarea>
+        </div>
+        <div class="form-group">
+            <label for="image">Service Image:</label>
+            <input type="file" class="form-control" id="image" name="image">
+            <br>
+            <?php if (!empty($existing_image)): ?>
+                <img src="<?php echo htmlspecialchars($existing_image); ?>" alt="Current Image" width="100">
+            <?php else: ?>
+                <p>No image uploaded.</p>
+            <?php endif; ?>
         </div>
         <button type="submit" class="btn btn-primary">Update Service</button>
     </form>

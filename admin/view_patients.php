@@ -49,15 +49,12 @@ $result = mysqli_query($conn, $sql);
                 <tr>
                     <th>ID</th>
                     <th>Username</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
+                    <th>Full Name</th>
                     <th>Email</th>
                     <th>Phone</th>
                     <th>Mobile</th>
                     <th>CNIC</th>
-                    <th>State</th>
-                    <th>City</th>
-                    <th>Age</th>
+                    <th>State - City</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -66,15 +63,12 @@ $result = mysqli_query($conn, $sql);
                     <tr>
                         <td><?php echo htmlspecialchars($row['id']); ?></td>
                         <td><?php echo htmlspecialchars($row['username']); ?></td>
-                        <td><?php echo htmlspecialchars($row['first_name']); ?></td>
-                        <td><?php echo htmlspecialchars($row['last_name']); ?></td>
+                        <td><?php echo htmlspecialchars($row['first_name']); ?> <?php echo htmlspecialchars($row['last_name']); ?></td>
                         <td><?php echo htmlspecialchars($row['email']); ?></td>
                         <td><?php echo htmlspecialchars($row['phone']); ?></td>
                         <td><?php echo htmlspecialchars($row['mobile']); ?></td>
                         <td><?php echo htmlspecialchars($row['cnic']); ?></td>
-                        <td><?php echo htmlspecialchars($row['state']); ?></td>
-                        <td><?php echo htmlspecialchars($row['city']); ?></td>
-                        <td><?php echo htmlspecialchars($row['age']); ?></td>
+                        <td><?php echo htmlspecialchars($row['state']); ?> <?php echo htmlspecialchars($row['city']); ?></td>
                         <td>
                             <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" onsubmit="return confirm('Are you sure you want to delete this patient?');">
                                 <input type="hidden" name="patient_id" value="<?php echo $row['id']; ?>">

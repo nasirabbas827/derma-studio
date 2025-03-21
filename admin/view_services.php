@@ -11,11 +11,28 @@ if (!isset($_SESSION["usertype"]) || $_SESSION["usertype"] !== "admin") {
 // Delete service if service_id is provided in the URL
 if (isset($_GET['delete_service_id'])) {
     $delete_service_id = $_GET['delete_service_id'];
+
+    // Fetch image path before deleting
+    $sql_image = "SELECT image FROM services WHERE service_id = ?";
+    $stmt_image = mysqli_prepare($conn, $sql_image);
+    mysqli_stmt_bind_param($stmt_image, "i", $delete_service_id);
+    mysqli_stmt_execute($stmt_image);
+    mysqli_stmt_bind_result($stmt_image, $image_path);
+    mysqli_stmt_fetch($stmt_image);
+    mysqli_stmt_close($stmt_image);
+
+    // Delete the image file
+    if (!empty($image_path) && file_exists($image_path)) {
+        unlink($image_path);
+    }
+
+    // Delete the service from database
     $sql_delete = "DELETE FROM services WHERE service_id = ?";
     $stmt_delete = mysqli_prepare($conn, $sql_delete);
     mysqli_stmt_bind_param($stmt_delete, "i", $delete_service_id);
     mysqli_stmt_execute($stmt_delete);
     mysqli_stmt_close($stmt_delete);
+
     header("Location: view_services.php");
     exit;
 }
@@ -46,6 +63,7 @@ $result = mysqli_query($conn, $sql);
                 <th>Service ID</th>
                 <th>Service Name</th>
                 <th>Description</th>
+                <th>Image</th>
                 <th>Created At</th>
                 <th>Updated At</th>
                 <th>Actions</th>
@@ -57,10 +75,14 @@ $result = mysqli_query($conn, $sql);
                     <td><?php echo $row['service_id']; ?></td>
                     <td><?php echo htmlspecialchars($row['service_name']); ?></td>
                     <td><?php echo htmlspecialchars($row['description']); ?></td>
+                    <td>
+                        <img src="<?php echo !empty($row['image']) ? htmlspecialchars($row['image']) : 'services/default.png'; ?>" 
+                             alt="Service Image" width="80" height="80">
+                    </td>
                     <td><?php echo $row['created_at']; ?></td>
                     <td><?php echo $row['updated_at']; ?></td>
                     <td>
-                        <a href="edit_service.php?service_id=<?php echo $row['service_id']; ?>" class="btn btn-primary btn-sm">Edit</a>
+                        <a href="edit_service.php?service_id=<?php echo $row['service_id']; ?>" class="btn btn-primary btn-sm mb-2">Edit</a>
                         <a href="?delete_service_id=<?php echo $row['service_id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this service?')">Delete</a>
                     </td>
                 </tr>

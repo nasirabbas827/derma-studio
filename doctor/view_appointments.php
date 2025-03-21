@@ -100,6 +100,7 @@ $result = mysqli_stmt_get_result($stmt);
 <?php include('navbar.php'); ?>
 
 <div class="container mt-5">
+    
     <h2 class="text-center">My Appointments</h2>
     <?php if (!empty($success_msg)): ?>
         <div class="alert alert-success" role="alert"><?php echo $success_msg; ?></div>
@@ -120,6 +121,8 @@ $result = mysqli_stmt_get_result($stmt);
             <input type="date" name="to_date" class="form-control" value="<?php echo htmlspecialchars($to_date); ?>">
         </div>
         <button type="submit" class="btn btn-primary">Search</button>
+<a href="" class="btn btn-dark float-right ml-3" onclick="window.print()">Print</a>
+
     </form>
 
     <!-- Appointment Table -->

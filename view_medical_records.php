@@ -35,6 +35,8 @@ $result = mysqli_stmt_get_result($stmt);
 <?php include('navbar.php'); ?>
 
 <div class="container mt-5">
+<a href="" class="btn btn-dark float-right mb-4" onclick="window.print()">Print</a>
+
     <h2 class="text-center">My Medical Records</h2>
     <div class="row">
         <div class="col-md-12">

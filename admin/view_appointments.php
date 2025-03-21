@@ -62,6 +62,7 @@ $result = mysqli_stmt_get_result($stmt);
 <body>
 <?php include('admin_navbar.php'); ?>
 <div class="container mt-5">
+    
     <h2>View Appointments</h2>
 
     <!-- Search Form -->
@@ -76,6 +77,8 @@ $result = mysqli_stmt_get_result($stmt);
             <input type="date" name="to_date" class="form-control" value="<?php echo htmlspecialchars($to_date); ?>">
         </div>
         <button type="submit" class="btn btn-primary">Search</button>
+<a href="" class="btn btn-dark float-right ml-4" onclick="window.print()">Print</a>
+
     </form>
 
     <!-- Appointments Table -->
